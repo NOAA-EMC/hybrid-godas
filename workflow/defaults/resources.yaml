@@ -63,17 +63,18 @@ default_resources: &default_resources
       exe: placeholder
       max_ppn: 1
 
-  run_final: !JobRequest
+  run_da_prep: !JobRequest
     - memory: "1024M"
       mpi_ranks: 1
-      walltime: !timedelta "00:01:00"
+      walltime: !timedelta "00:30:00"
       exe: placeholder
       max_ppn: 1
 
-  run_da_prep: !JobRequest
+  run_3dvar: !JobRequest
     - memory: "3072M"
       mpi_ranks: 312
       walltime: !timedelta "00:30:00"
+      max_ppn: 24
 
   run_gdaspost: !JobRequest
     - batch_memory: "3072M"

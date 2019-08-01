@@ -20,10 +20,17 @@ suite: !Cycle
         config: [ base ]
         J_JOB: JJOB_DA_PREP
 
-      da_3dvar_run: !Task
+      da_prep_3dvar: !Task
         <<: *bigmem_task_template
         Trigger: !Depend  da_prep
-        resources: !calc partition.resources.run_da_prep
+        resources: !calc partition.resources.run_3dvar
+        config: [ base ]
+        J_JOB: JJOB_PREP_3DVAR
+
+      da_3dvar_run: !Task
+        <<: *bigmem_task_template
+        Trigger: !Depend  da_prep_3dvar
+        resources: !calc partition.resources.run_3dvar
         config: [ base ]
         J_JOB: JJOB_DA_3DVAR
 
