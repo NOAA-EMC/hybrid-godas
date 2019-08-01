@@ -63,7 +63,7 @@ config_base:
     export PSLOT="{doc.names.experiment}"
     export EXPDIR="{doc.places.EXPDIR}"
     export ROTDIR="{doc.places.ROTDIR}"
-    export RUNDIR="{$STMP/RUNDIR}"
+    export RUNDIR="{doc.places.LONG_TERM_TEMP}/$USER/RUNDIR"
     export ICSDIR="{doc.places.ICSDIR}"
     
     # DA cycle info
