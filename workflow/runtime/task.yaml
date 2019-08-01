@@ -2,7 +2,7 @@
 # Individual tasks in the suite may override some settings
 
 eoln: "\n"
-expdir_config_source_line: "source $EXPDIR/parm/config/config.%s"
+expdir_config_source_line: "source $ROOT_GODAS_DIR/parm/config/config.%s"
 
 task_template: &task_template
 
@@ -25,7 +25,6 @@ task_template: &task_template
   # the j-jobs (jobs/ directory) in Rocoto:
   rocoto_load_modules: !expand >-
      {doc.platform.get("rocoto_load_modules_extra","")}
-     source $HOMEgfs/ush/load_fv3gfs_modules.sh {task_type} ;
      module list
 
   # rocoto_command - command rocoto executes to pass control to the
@@ -46,8 +45,8 @@ task_template: &task_template
       take: ""
     - when: !calc doc.settings.four_cycle_mode
       take: !expand |
-        export HOMEgfs=${{HOMEgfs:-${{NWROOT:?}}/gfs.${{gfs_ver:?"###FATAL ERROR gfs_ver is not set"}}}}
-        {doc.eoln.join([ "source $HOMEgfs/parm/config/config.%s"%(x,) for x in config_list ])}
+        export $ROOT_GODAS_DIR=${{$ROOT_GODAS_DIR:-${{NWROOT:?}}/gfs.${{gfs_ver:?"###FATAL ERROR gfs_ver is not set"}}}}
+        {doc.eoln.join([ "source $ROOT_GODAS_DIR/parm/config/config.%s"%(x,) for x in config_list ])}
     - otherwise: !calc |
         doc.eoln.join([ "source $EXPDIR/config.%s"%(x,) for x in config_list ])
 
@@ -55,7 +54,7 @@ task_template: &task_template
   # control to the j-job (jobs/ directory) for this task.
   ecflow_command: !expand "{J_JOB_PATH}/{J_JOB}"
 
-  J_JOB_PATH: '$HOMEgfs/jobs'
+  J_JOB_PATH: '$ROOT_GODAS_DIR/jobs'
 
   # rocoto_log_path: contents of the <join> entry of the <task> which
   # sets the stdout and stderr log path in the Rocoto XML.
@@ -195,7 +194,7 @@ task_template: &task_template
     - when: !calc doc.settings.four_cycle_mode
       take: !calc doc.platform.four_cycle_mode_modules
     - otherwise: !expand |-
-        source "$HOMEgfs/ush/load_fv3gfs_modules.sh" {task_type}
+        source "$ROOT_GODAS_DIR/ush/load_fv3gfs_modules.sh" {task_type}
 
   # ecf_after_module_commands - intended to list the module commands,
   # and recover from their consequences.  For example, "module purge"
@@ -216,7 +215,7 @@ task_template: &task_template
         
         export cycle=t%CYC%z
         export jlogfile=/%COM%/logs/jlogfile
-        export EXPDIR=${EXPDIR:-$HOMEgfs/parm/config} # where to get config files
+        export EXPDIR=${EXPDIR:-$ROOT_GODAS_DIR/parm/config} # where to get config files
         
         # Development overrides
         export COMROOT=/%COM%
