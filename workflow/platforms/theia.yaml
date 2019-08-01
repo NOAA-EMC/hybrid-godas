@@ -80,6 +80,7 @@ platform: !Platform
     default_shared: !calc doc.platform.partitions.theia
     default_exclusive: !calc doc.platform.partitions.theia
     default_service: !calc doc.platform.partitions.theia_service
+    default_bigmem: !calc doc.platform.partitions.theia_bigmem
     theia:
       <<: *global_partition_common
       specification: theia
