@@ -40,6 +40,7 @@ config_base:
     export ROOT_GODAS_DIR="{doc.places.ROOT_GODAS_DIR}"
     export STMP="{doc.places.SHORT_TERM_TEMP}/$USER"
     export PTMP="{doc.places.LONG_TERM_TEMP}/$USER"
+    export SOCA_EXEC="{doc.places.SOCA_EXEC}"
     
     ####################################################
     # DO NOT ADD MACHINE DEPENDENT STUFF BELOW THIS LINE
@@ -62,7 +63,7 @@ config_base:
     export PSLOT="{doc.names.experiment}"
     export EXPDIR="{doc.places.EXPDIR}"
     export ROTDIR="{doc.places.ROTDIR}"
-    export RUNDIR="{doc.places.DATAROOT}"
+    export RUNDIR="{$STMP/RUNDIR}"
     export ICSDIR="{doc.places.ICSDIR}"
     
     # DA cycle info
