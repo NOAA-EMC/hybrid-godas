@@ -299,6 +299,13 @@ service_task_template: &service_task_template
   J_JOB: !expand '{task_path_list[-1].upper()}'
   task_type: service
 
+bigmem_task_template: &bigmem_task_template
+  <<: *task_template
+  partition: !calc doc.accounting.bigmem_partition
+  default_accounting: !calc partition.bigmem_accounting_ref
+  J_JOB: !expand '{task_path_list[-1].upper()}'
+  task_type: bigmem
+
 # exclusive_task_template - a convenient alias to define a task that has
 # the exclusive_accounting and passes "exclusive" to the
 # load_fv3gfs_modules.sh

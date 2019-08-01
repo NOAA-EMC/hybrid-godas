@@ -143,6 +143,31 @@ platform: !Platform
       nodes: !calc |
         tools.node_tool_for(scheduler_settings.node_type, scheduler_settings)
 
+    theia_bigmem:
+      <<: *global_partition_common
+      specification: bigmem
+      service_queue: bigmem
+      scheduler_settings:
+        scheduler_name: Slurm
+        parallelism_name: HydraIMPI
+        node_type: generic
+        physical_cores_per_node: 12
+        logical_cpus_per_core: 12
+        hyperthreading_allowed: false
+        indent_text: "  "
+        memory_per_node: !calc (64*1024)
+
+      bigmem_accounting_ref:
+        queue: batch
+        project: !calc doc.accounting.cpu_project
+        partition: bigmem
+
+      scheduler: !calc |
+        tools.get_scheduler(scheduler_settings.scheduler_name, scheduler_settings)
+      parallelism: !calc |
+        tools.get_parallelism(scheduler_settings.parallelism_name, scheduler_settings)
+      nodes: !calc |
+        tools.node_tool_for(scheduler_settings.node_type, scheduler_settings)
 
   # Path to pan_df, the program used to get Panasas disk usage information:
   pan_df: pan_df

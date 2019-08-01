@@ -8,4 +8,5 @@ accounting: &accounting
   ecflow_header: envir-p3.h
   shared_partition: !calc doc.platform.partitions.default_shared
   exclusive_partition: !calc doc.platform.partitions.default_exclusive
+  bigmem_partition: !calc doc.platform.partitions.default_bigmem
   service_partition: !calc doc.platform.partitions.default_service

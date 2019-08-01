@@ -14,16 +14,16 @@ suite: !Cycle
         J_JOB: JJOB_FORECAST
 
       da_prep: !Task
-        <<: *shared_task_template
+        <<: *bigmem_task_template
         Trigger: !Depend  fcst_run
-        resources: !calc partition.resources.run_nothing
+        resources: !calc partition.resources.run_da_prep
         config: [ base ]
         J_JOB: JJOB_DA_PREP
 
       da_3dvar_run: !Task
-        <<: *exclusive_task_template
+        <<: *bigmem_task_template
         Trigger: !Depend  da_prep
-        resources: !calc partition.resources.run_nothing
+        resources: !calc partition.resources.run_da_prep
         config: [ base ]
         J_JOB: JJOB_DA_3DVAR
 
