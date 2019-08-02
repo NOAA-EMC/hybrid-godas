@@ -152,8 +152,8 @@ platform: !Platform
         scheduler_name: Slurm
         parallelism_name: HydraIMPI
         node_type: generic
-        physical_cores_per_node: 12
-        logical_cpus_per_core: 12
+        physical_cores_per_node: 24
+        logical_cpus_per_core: 24
         hyperthreading_allowed: false
         indent_text: "  "
         memory_per_node: !calc (64*1024)

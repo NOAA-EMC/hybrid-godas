@@ -15,6 +15,7 @@ SOCA_STATIC=/scratch4/NCEPDEV/ocean/scrub/Guillaume.Vernieres/JEDI/soca/soca-sta
 SOCA_OBS=/scratch4/NCEPDEV/ocean/scrub/Guillaume.Vernieres/JEDI/soca/staged-obs/
 RUNDIR=/scratch4/NCEPDEV/ocean/scrub/Guillaume.Vernieres/JEDI/soca/workflowrun/test001/
 
+mkdir -p $RUNDIR
 cd $RUNDIR
 
 # Copy static files into RUNDIR
@@ -23,7 +24,7 @@ cp -r $SOCA_STATIC/* .
 
 # Prepare observations
 #---------------------
-mkdir Data
+mkdir -p Data
 ln -s $SOCA_OBS/sst-2011100112.nc ./Data/sst.nc
 ln -s $SOCA_OBS/adt-2011100112.nc ./Data/adt.nc
 ln -s $SOCA_OBS/icec-2011100112.nc ./Data/icec.nc
