@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 
 #================================================================================
 #================================================================================
@@ -17,4 +17,4 @@ cd $RUNDIR
 echo $SOCA_EXEC
 # Create BUMP convolution operator
 mkdir -p bump
-#srun -n 312 $SOCA_EXEC/soca_staticbinit.x ./yaml/static_SocaError_init.yml
+srun -n 312 $SOCA_EXEC/soca_staticbinit.x ./yaml/static_SocaError_init.yml
