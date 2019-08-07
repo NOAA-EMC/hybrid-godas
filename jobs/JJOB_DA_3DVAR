@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 
 #================================================================================
 #================================================================================
@@ -13,6 +13,6 @@ SOCA_EXEC=/scratch4/NCEPDEV/ocean/scrub/Guillaume.Vernieres/JEDI/soca/soca-bundl
 RUNDIR=/scratch4/NCEPDEV/ocean/scrub/Guillaume.Vernieres/JEDI/soca/workflowrun/test001/
 
 cd $RUNDIR
-#srun -n 312 $SOCA_EXEC/soca_3dvar.x ./yaml/3dvar_godas.yml
+srun -n 312 $SOCA_EXEC/soca_3dvar.x ./yaml/3dvar_godas.yml
 
 

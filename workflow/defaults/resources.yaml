@@ -64,14 +64,14 @@ default_resources: &default_resources
       max_ppn: 1
 
   run_da_prep: !JobRequest
-    - memory: "1024M"
+    - memory: "64G"
       mpi_ranks: 1
       walltime: !timedelta "00:30:00"
       exe: placeholder
       max_ppn: 1
 
   run_3dvar: !JobRequest
-    - memory: "3072M"
+    - memory: "64G"
       mpi_ranks: 312
       walltime: !timedelta "00:30:00"
       max_ppn: 24
